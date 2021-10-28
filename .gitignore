@@ -1,0 +1,6 @@
+._*
+debug/
+.DS*
+.nextflow*
+screenlog*
+results*
