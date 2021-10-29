@@ -90,11 +90,10 @@ process kneaddata {
 
 // Functional profiling using assembly
 process assembly {
-  publishDir "$params.outdir/assembly/$sample_id/metaspades", pattern: "*-final.fasta.g", mode: 'copy'
-  publishDir "$params.outdir/assembly/$sample_id/metaspades_quast", pattern: "metaspades_quast/", mode: 'copy'
-  publishDir "$params.outdir/assembly/$sample_id/metaviralspades", pattern: "*-mvs-*.fasta.gz", mode: 'copy'
-  publishDir "$params.outdir/assembly/$sample_id/metaviralspades_quast", pattern: "metaviralspades_quast/", mode: 'copy'
-  publishDir "$params.outdir/assembly/$sample_id/", pattern: "*.{log,txt}", mode: 'copy'
+  publishDir "$params.outdir/assembly/$sample_id/metaspades", pattern: "*.fasta.gz", mode: 'copy'
+  publishDir "$params.outdir/assembly/$sample_id/metaspades", pattern: "*.log", mode: 'copy'
+  publishDir "$params.outdir/assembly/$sample_id", pattern: "metaspades_quast/*", mode: 'copy'
+  publishDir "$params.outdir/assembly/$sample_id", pattern: "metaviralspades_quast/*", mode: 'copy'
 
   input:
     set sample_id, file(paired), file(unpaired) from filter_fq_assembly
